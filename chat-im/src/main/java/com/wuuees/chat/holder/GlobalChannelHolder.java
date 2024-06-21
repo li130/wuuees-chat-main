@@ -1,6 +1,7 @@
 package com.wuuees.chat.holder;
 
 import com.wuuees.chat.common.model.RoomInfoDto;
+import com.wuuees.chat.common.model.UserGlobalInfoDto;
 import com.wuuees.chat.message.MessageBroadcaster;
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
@@ -28,6 +29,9 @@ public class GlobalChannelHolder {
 
     @Autowired
     private IRoomHolder roomHolder;
+
+    @Autowired
+    private IUserHolder userHolder;
 
     public void put(String userId, NioSocketChannel channel) {
         CHANNEL_MAP.put(userId, channel);
@@ -88,10 +92,19 @@ public class GlobalChannelHolder {
         messageBroadcaster.addChannelGroup(roomId, channelGroup);
     }
 
+    /**
+     * 加入房间
+     *
+     * @param roomId  房间id
+     * @param userId  用户id
+     * @param channel channel
+     */
     public void joinRoom(String roomId, String userId, Channel channel) {
         messageBroadcaster.joinRoom(roomId, userId, (NioSocketChannel) channel);
         // 添加用户所在的房间信息
-        
+        UserGlobalInfoDto userInfo = userHolder.getUserInfo(userId);
+        userInfo.setRoomId(roomId);
+        userHolder.saveUserInfo(userInfo);
     }
 
     public void dissolveTheRoomByLogout(String roomId) {

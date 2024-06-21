@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package chat_msg;
+option java_package = "com.wuuees.chat.message";
+
+enum MsgCommand{
+  //登录
+  USER_LOGIN_CMD = 0;
+  USER_LOGIN_ACK = 1;
+  //心跳
+  HEART_BEAT_CMD = 2;
+  HEART_BEAT_ACK = 3;
+
+}
+
+//用户登录
+message UserLoginCmd{
+  string userName = 1;
+  string userAvatar = 2;
+}
+//用户登录响应
+message UserLoginAck{
+  string userId = 1;
+  string userName = 2;
+  string userAvatar = 3;
+}
+
+//心跳
+message HeartBeatCmd{
+  string ping = 1;
+}
+message HeartBeatAck{
+  string pong = 1;
+}

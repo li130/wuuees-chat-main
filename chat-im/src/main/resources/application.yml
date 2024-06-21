@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: chat-im
+logging:
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss.SSS
+
+
+# chat
+wuuees-chat:
+  websocketPort: 8080 #服务端口
+  bossThreadSize: 1 # boss线程数
+  workThreadSize: 8 # work线程数
+  heartBeatTime: 5000 #心跳时间 5s

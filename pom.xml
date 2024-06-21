@@ -11,6 +11,8 @@
     <modules>
         <module>chat-im</module>
         <module>chat-common</module>
+        <module>chat-framework</module>
+        <module>chat-framework/chat-framework-redis-starter</module>
     </modules>
 
     <properties>

@@ -18,4 +18,6 @@ public interface IRoomHolder {
      * @param roomNo 房间号
      */
     void removeRoomInfo(Integer roomNo);
+
+    String getRoomId(Integer roomNo);
 }

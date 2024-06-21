@@ -61,6 +61,6 @@ public class HearBeatHandler extends ChannelInboundHandlerAdapter implements Ini
     @Override
     public void afterPropertiesSet() throws Exception {
         init();
-        log.info("HearBeatHandler init Success, heartBeatTime: {}ms", heartBeatTime);
+        log.info("HeartBeatHandler初始化成功，heartBeatTime: {}ms", heartBeatTime);
     }
 }
